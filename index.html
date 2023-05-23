@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par-Kea Colombia</title>
+</head>
+<body>
+    <header>
+       <h1>Par-Kea Colombia</h1>
+       <img src="assets/imgs/pAr-kea.png" alt="" srcset="">
+    </header>
+    <section>
+        <button><a href="singup.html">Sing Up</a></button>
+        <button><a href="login.html">Log In</a></button>
+    </section>
+    <footer>
+        Todos los derechos reservados &copy;
+        <script>
+            function date_ddmmmyy(date) {
+              var d = date.getDate();
+              var m = date.getMonth() + 1;
+              var y = date.getYear();
+    
+              if (y >= 2000) { y -= 2000; }
+              if (y >= 100) { y -= 100; }
+    
+              return "" + (d < 10 ? "0" + d : d) + "/" + m + "/" + (y < 10 ? "0" + y : y);
+            }
+    
+            function date_lastmodified() {
+              var lmd = document.lastModified;
+              var s = "Unknown";
+              var d1;
+    
+              if (0 != (d1 = Date.parse(lmd))) {
+                s = "" + date_ddmmmyy(new Date(d1));
+              }
+    
+              return s;
+            }
+            document.write(date_lastmodified());
+          </script>
+    </footer>
+    
+</body>
+</html>
