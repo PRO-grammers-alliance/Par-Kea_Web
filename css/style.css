@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
-
 }
 .table-hover tbody tr:hover {
     color: #dd6109;
@@ -42,14 +41,12 @@ body {
 }
 
 .v-line{
-    border-right: thick solid #2037c3cc;
+    border-bottom: thick solid #2037c3cc;
     height:105%;
-    right:2%;
     position: absolute;
+    padding-bottom: 30px;
    }
 .flotante2 {
-
-
     background: rgb(255, 255, 255);
     padding: 1.875em;
     border-radius: 1.875em;
@@ -75,5 +72,6 @@ body {
     display: block;
 }
 
-
-
+.dias{
+    font-weight: bold;
+}
