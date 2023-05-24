@@ -11,35 +11,160 @@
     </head>
     <body>
         <div class="container">
-            <div class="d-grid justify-content-center align-items-center" >
+            <div>
                 <div class="flotante2">
                     <div class="row">
-                        <div class="col-8 col-sm mb-4 mb-sm-0  text-center v-line position-relative">
+                        <div class="col-12 col-sm mb-4 mb-sm-0  text-center v-line position-relative">
                             <img src="./assets/imgs/parq.png" width="490" height="300" style="border-radius: 1.875em;">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <div class="d-grid gap-1">
                                 <h4>SING UP</h4>
                             </div>
                             <form method="post" action="./validatesetion.php">
                                 <div class="d-grid gap-3">
                                     <div>
-                                        <label>Cupos del Totales del Parqueadero:</label>
-                                        <input type="number" name="username" id="username-input">
+                                        <label for="">Nombre Parqueadero</label>
+                                        <input type="text" placeholder="Nombre del Parqueadero">
                                     </div>
-                                    <div>
-                                        <label>Horario Apertura:</label>
-                                        <input type="time" name="password" id="pass-input">
-                                        <label>Horario Cierre:</label>
-                                        <input type="time" name="password" id="pass-input">
-                                    </div>
-                                    <div>
+                                    <div style="border-bottom: 1px solid gray;">
                                         <label>Tarifa Moto</label>
-                                        <input type="number">
-                                        <br>
+                                        <input type="number" placeholder="Precio para Motos">
                                         <label>Tarifa Carro</label>
-                                        <input type="number">
+                                        <input type="number" placeholder="Precio para Carros">
                                     </div>
+                                    <div>
+                                        <table class="table">
+                                            <tr>
+                                                <th scope="row">
+                                                    <td>Lunes</td>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">24 horas</label>
+                                                        <br>
+                                                        <label>Apertura:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <label>Cierre:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">Sin Servicio</label>
+                                                    </td>
+                                                </th>
+                                                <th scope="row">
+                                                    <td>Martes</td>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">24 horas</label>
+                                                        <br>
+                                                        <label>Apertura:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <label>Cierre:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">Sin Servicio</label>
+                                                    </td>
+                                                </th>
+                                                <th scope="row">
+                                                    <td>Miercoles</td>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">24 horas</label>
+                                                        <br>
+                                                        <label>Apertura:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <label>Cierre:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">Sin Servicio</label>
+                                                    </td>
+                                                </th>
+                                                <th scope="row">
+                                                    <td>Jueves</td>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">24 horas</label>
+                                                        <br>
+                                                        <label>Apertura:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <label>Cierre:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">Sin Servicio</label>
+                                                    </td>
+                                                </th>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <td>Viernes</td>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">24 horas</label>
+                                                        <br>
+                                                        <label>Apertura:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <label>Cierre:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">Sin Servicio</label>
+                                                    </td>
+                                                </th>
+                                                <th scope="row">
+                                                    <td>Sabado</td>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">24 horas</label>
+                                                        <br>
+                                                        <label>Apertura:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <label>Cierre:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">Sin Servicio</label>
+                                                    </td>
+                                                </th>
+                                                <th scope="row">
+                                                    <td>Domingo</td>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">24 horas</label>
+                                                        <br>
+                                                        <label>Apertura:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <label>Cierre:</label>
+                                                        <input type="time" name="password" id="pass-input">
+                                                        <br>
+                                                        <input type="checkbox" name="" id="">
+                                                        <label for="">Sin Servicio</label>
+                                                    </td>
+                                                </th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <label for="">Ciudad</label>
+                                        <select name="" id="">
+                                            <option value="">Seleccione Ciudad...</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label>Cupos del Totales del Parqueadero:</label>
+                                        <input type="number" name="username" id="username-input" placeholder="Cantidad Cupos">
+                                    </div>
+                                    
                                     <div>
                                         <input id="Login" name="L1" class="botons1" type="submit" value="Registrar Parqueadero"></input>
                                     </div>
