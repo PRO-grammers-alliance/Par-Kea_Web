@@ -22,13 +22,14 @@ $execute = $myssql_query($qrySelect, $link);
 if ($execute){
     while ($result = $myssql_fetch_array($execute)){
         if($result["codigo"] != $CODIGO){
-
+            $qry = "INSERT INTO codigo (codigo, activo) values (". $CODIGO . ", 1);";
+            $insertar = $myssql_query($qrySelect, $link);
         }
     }
 }
 //-------GUARDAR CODIGO-------
 //realizar query
-$qry = "INSERT INTO codigo (codigo, activo) values (". $CODIGO;
+
 
 echo $CODIGO;
 
