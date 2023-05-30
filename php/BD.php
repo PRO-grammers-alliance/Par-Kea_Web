@@ -6,11 +6,10 @@ error_reporting (0);
 // $BDName = "FidelissaCRM";
 $BD = "localhost";
 $User = "root";
-$Passwd = "12345";
+$Passwd = "";
 $BDName = "ingsoft2";
 
 $link = mssql_connect($BD, $User, $Passwd)
     or die("No se conecto  server'");
 mssql_select_db($BDName)
     or die("No se conecto  BD");
-?>
