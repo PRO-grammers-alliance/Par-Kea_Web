@@ -3,11 +3,17 @@ require("BD.php");
 
 //GENERAR CODIGO PARA CREACION DEL PARQUEADERO
 
-$numeros = range(1, 9);
+
 $CODIGO = "";
-while (strlen($CODIGO) < 10) {
-    $numRand = rand(0, count($numeros) - 1);
-    $CODIGO = $CODIGO .  $numeros[$numRand];
+function genCOD()
+{
+    global $CODIGO;
+    $numeros = range(1, 9);
+    while (strlen($CODIGO) < 10) {
+        $numRand = rand(0, count($numeros) - 1);
+        $CODIGO = $CODIGO .  $numeros[$numRand];
+    }
+    return $CODIGO;
 }
 
 function confCod($link, $COD)
@@ -23,6 +29,7 @@ function confCod($link, $COD)
         while ($row = mssql_fetch_array($result)) {
             if ($row['Codigo'] === $COD) {
                 $esta = true;
+                echo "YA ESTABA";
             } else {
                 $esta = false;
             }
@@ -32,7 +39,20 @@ function confCod($link, $COD)
     return $esta;
 }
 
-function guardarCODBD($existe, $COD)
+function guardarCODBD($existe, $link)
 {
-    //CONFIRMAR GUARDAR
+    global $CODIGO;
+
+    if (!$existe) {
+        $qry = "INSERT INTO FelipeING_Codigo (codigo, activo) VALUES (" . $CODIGO . ",1);";
+        $insertar = mssql_query($qry, $link);
+        if (!$insertar) {
+            die("Error al insertar codigo" . mssql_get_last_message());
+        }
+        return $CODIGO;
+    } else {
+        return "Vuelve a Generar Otro Codigo";
+    }
 }
+
+echo guardarCODBD(confCod($link, genCOD()), $link);
