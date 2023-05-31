@@ -2,7 +2,7 @@ function llamarFuncionPHP() {
     fetch('./php/generarCodigo.php')
       .then(response => response.text())
       .then(data => {
-        console.log(data);
+        console.log("HOLA " + data);
         document.getElementById('resultado').innerHTML = data;
         //Mostrar Codigo
         var elemento = document.getElementById("codigo");
