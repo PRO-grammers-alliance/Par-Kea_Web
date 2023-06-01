@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admimistrador</title>
+    <title>REPORTES ADMINISTRADOR</title>
     <!--Conexión con Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/estilosCod.css">
+    <link rel="stylesheet" href="./css/estilosReportes.css">
     <link rel="stylesheet" href="./css/style.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -25,30 +25,31 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6 text-center">
-                                <form>
-                                    <button type="button" onclick="llamarFuncionPHP()" class="btn btn-primary">Generar Codigo De Registro Parqueadero</button>
-                                </form>
-                            </div>
-                            <div class="col-sm-6 text-center">
-                                <form>
-                                    <a href="./reporteAdmin.html"><button type="button" class="btn btn-primary" name="submit">Generar Reporte Parqueaderos</button></a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                        <table id="tablaReporte" class="table table-dark table-bordered table-striped">
+                            <thead>
+                                <tr id="head_table">
+                                    <th>Nit</th>
+                                    <th>Nombre</th>
+                                    <th>Tarifa Carro</th>
+                                    <th>Tarifa Moto</th>
+                                    <th>Horario</th>
+                                    <th>Ciudad</th>
+                                    <th>Cupos</th>
+                                    <th>Cupos Disponibles</th>
+                                    <th>Codigo</th>
+                                    <th>Fecha Modificaci&oacute;n</th>
+                                    <th>Direcci&oacute;n</th>
+                                </tr>
+                            </thead>
+                            <tbody id="content_table" style="font-size: 14px;">
+                                
+                            </tbody>
+                        </table>
+                    </div>                    
                 </div>
             </div>
         </div>
     </div>
-    <div id="codigo">
-        <div class="elemento col-sm-3 text-center" style="background-color: white; padding: 16px;">
-            <h3>Codigo Generado</h3>
-            <p id="resultado"></p>
-          <button class="btn btn-primary text-center" onclick="ocultarElemento()">Cerrar</button>
-        </div>
-      </div>
-    <script src="javascript/llamarPHP.js"></script>
+    <script src="javascript/reportes.js"></script>
 </body>
 </html>
