@@ -51,12 +51,43 @@ function enableDate(){
     }
 }
 
-function filtrarFecha(){
+document.getElementById("filtroFecha").onchange = function (){
     var fecha = document.getElementById("filtroFecha").value;
     fetch('./php/reportes.php?fecha=' + encodeURIComponent(fecha))
     .then(response => response.text())
     .then(data => {
-      console.log(data);
+      //VACIAR TABLA
+        let tbody = document.getElementById("content_table");
+        if (tbody.hasChildNodes){
+            while (tbody.firstChild) {
+                tbody.firstChild.remove();
+              }
+        }
+        //Mostrar mensaje de carga
+        var elemento = document.getElementById("codigo");
+        elemento.classList.add("visible");
+        document.body.style.overflow = "hidden";
+
+        var fila=0;
+        var columnaBody = 0;
+        data.forEach(element => {
+            let tr = document.createElement("tr");
+            tr.setAttribute("id", "tr"+fila);
+            tbody.appendChild(tr);
+            Object.keys(element).forEach(function(value){
+                let tdTr = document.getElementById("tr" + fila);
+                let td = document.createElement("td");
+                td.setAttribute("id", columnaBody);
+                td.textContent = value;
+                tdTr.appendChild(td);
+                ++columnaBody;
+            });
+            ++fila;
+        });
+
+        //Quitar mensaje de carga
+        elemento.classList.remove("visible");
+        document.body.style.overflow = "auto";
     })
     .catch(error => {
       console.error('Error:', error);

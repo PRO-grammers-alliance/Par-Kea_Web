@@ -80,3 +80,10 @@ body {
     letter-spacing: 0.16em;
     font-size: 16.5px;
 }
+
+@media (max-width: 1400px) {
+    #tablaReporte{
+        letter-spacing: 0.06em;
+        font-size: 16px;
+    }
+}
