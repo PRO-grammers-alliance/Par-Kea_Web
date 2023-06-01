@@ -1,14 +1,27 @@
 function obtenerReportes() {
+    //VACIAR TABLA
+    let tbody = document.getElementById("content_table");
+    if (tbody.hasChildNodes){
+        while (tbody.firstChild) {
+            tbody.firstChild.remove();
+          }
+    }
+    //Mostrar mensaje de carga
+    var elemento = document.getElementById("codigo");
+    elemento.classList.add("visible");
+    document.body.style.overflow = "hidden";
+
+    //Traer Datos
     fetch('./php/reportes.php')
       .then(response => response.json())
       .then(data => {
+        //CARGAR DATOS
         var fila=0;
+        var columnaBody = 0;
         data.forEach(element => {
-            let tbody = document.getElementById("content_table");
             let tr = document.createElement("tr");
             tr.setAttribute("id", "tr"+fila);
             tbody.appendChild(tr);
-            var columnaBody = 0;
             Object.values(element).forEach(function(value){
                 let tdTr = document.getElementById("tr" + fila);
                 let td = document.createElement("td");
@@ -19,6 +32,34 @@ function obtenerReportes() {
             });
             ++fila;
         });
-    });
+
+        //Quitar mensaje de carga
+        elemento.classList.remove("visible");
+        document.body.style.overflow = "auto";
+    });  
 }
 window.onload = obtenerReportes();
+
+function enableDate(){
+    var checkDate = document.getElementById("filterDate");
+    if(checkDate.checked){
+        document.getElementById("filtroFecha").removeAttribute("disabled");
+    }else{
+        document.getElementById("filtroFecha").setAttribute("disabled", "disabled");
+        document.getElementById("filtroFecha").value ="";
+        obtenerReportes();
+    }
+}
+
+function filtrarFecha(){
+    var fecha = document.getElementById("filtroFecha").value;
+    fetch('./php/reportes.php?fecha=' + encodeURIComponent(fecha))
+    .then(response => response.text())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+}

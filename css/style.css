@@ -74,6 +74,9 @@ body {
     font-weight: bold;
 }
 
-table{
-    font-family: 'calibri';
+/* ESTILOS REPORTES */
+
+#tablaReporte{
+    letter-spacing: 0.16em;
+    font-size: 16.5px;
 }
