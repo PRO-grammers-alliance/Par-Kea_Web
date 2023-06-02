@@ -56,12 +56,19 @@ document.getElementById("filtroFecha").onchange = function (){
     fetch('./php/reportes.php?fecha=' + encodeURIComponent(fecha))
     .then(response => response.text())
     .then(data => {
+        console.log(data);
       //VACIAR TABLA
         let tbody = document.getElementById("content_table");
+        let thead = document.getElementById("head_table");
         if (tbody.hasChildNodes){
             while (tbody.firstChild) {
                 tbody.firstChild.remove();
-              }
+            }
+        }
+        if (thead.hasChildNodes){
+            while (thead.firstChild) {
+                thead.firstChild.remove();
+            }
         }
         //Mostrar mensaje de carga
         var elemento = document.getElementById("codigo");
@@ -70,6 +77,21 @@ document.getElementById("filtroFecha").onchange = function (){
 
         var fila=0;
         var columnaBody = 0;
+
+        data.forEach(array => {
+            console.log(array);
+        })
+        // data.forEach(element => {
+        //     Object.vaules(element).forEach(function(value){
+        //         let th = document.createElement("th");
+        //         th.setAttribute("id", fila);
+        //         th.textContent = value;
+        //         thead.appendChild(th);
+        //         ++fila;
+        //     });
+        // });
+
+        fila = 0;
         data.forEach(element => {
             let tr = document.createElement("tr");
             tr.setAttribute("id", "tr"+fila);
@@ -89,8 +111,4 @@ document.getElementById("filtroFecha").onchange = function (){
         elemento.classList.remove("visible");
         document.body.style.overflow = "auto";
     })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
 }
