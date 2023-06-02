@@ -15,9 +15,41 @@ function obtenerReportes() {
     fetch('./php/reportes.php')
       .then(response => response.json())
       .then(data => {
+        console.log(data);
+        //VACIAR TABLA
+        let tbody = document.getElementById("content_table");
+        let thead = document.getElementById("head_table");
+        if (tbody.hasChildNodes){
+            while (tbody.firstChild) {
+                tbody.firstChild.remove();
+            }
+        }
+        if (thead.hasChildNodes){
+            while (thead.firstChild) {
+                thead.firstChild.remove();
+            }
+        }
+
         //CARGAR DATOS
         var fila=0;
         var columnaBody = 0;
+        data.forEach(element => {
+            if (thead.hasChildNodes){
+                while (thead.firstChild) {
+                    thead.firstChild.remove();
+                }
+            }
+            Object.keys(element).forEach(function(value){
+                let th = document.createElement("th");
+                th.setAttribute("id", value +"-"+fila);
+                th.textContent = value.replace("_", " ");
+                thead.appendChild(th);
+                ++fila;
+            });
+        });
+
+        fila = 0;
+
         data.forEach(element => {
             let tr = document.createElement("tr");
             tr.setAttribute("id", "tr"+fila);
@@ -53,10 +85,13 @@ function enableDate(){
 
 document.getElementById("filtroFecha").onchange = function (){
     var fecha = document.getElementById("filtroFecha").value;
+    //Mostrar mensaje de carga
+    var elemento = document.getElementById("codigo");
+    elemento.classList.add("visible");
+    document.body.style.overflow = "hidden";
     fetch('./php/reportes.php?fecha=' + encodeURIComponent(fecha))
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
-        console.log(data);
       //VACIAR TABLA
         let tbody = document.getElementById("content_table");
         let thead = document.getElementById("head_table");
@@ -70,33 +105,31 @@ document.getElementById("filtroFecha").onchange = function (){
                 thead.firstChild.remove();
             }
         }
-        //Mostrar mensaje de carga
-        var elemento = document.getElementById("codigo");
-        elemento.classList.add("visible");
-        document.body.style.overflow = "hidden";
 
         var fila=0;
         var columnaBody = 0;
 
-        data.forEach(array => {
-            console.log(array);
-        })
-        // data.forEach(element => {
-        //     Object.vaules(element).forEach(function(value){
-        //         let th = document.createElement("th");
-        //         th.setAttribute("id", fila);
-        //         th.textContent = value;
-        //         thead.appendChild(th);
-        //         ++fila;
-        //     });
-        // });
+        data.forEach(element => {
+            if (thead.hasChildNodes){
+                while (thead.firstChild) {
+                    thead.firstChild.remove();
+                }
+            }
+            Object.keys(element).forEach(function(value){
+                let th = document.createElement("th");
+                th.setAttribute("id", value +"-"+fila);
+                th.textContent = value;
+                thead.appendChild(th);
+                ++fila;
+            });
+        });
 
         fila = 0;
         data.forEach(element => {
             let tr = document.createElement("tr");
             tr.setAttribute("id", "tr"+fila);
             tbody.appendChild(tr);
-            Object.keys(element).forEach(function(value){
+            Object.values(element).forEach(function(value){
                 let tdTr = document.getElementById("tr" + fila);
                 let td = document.createElement("td");
                 td.setAttribute("id", columnaBody);

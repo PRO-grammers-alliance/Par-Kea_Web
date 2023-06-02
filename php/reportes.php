@@ -1,6 +1,8 @@
 <?php
 require("BD.php");
 
+$fecha = $_GET["fecha"];
+
 if (!isset($_GET["fecha"])) {
     $qry = "SELECT CAST(Par.Nit AS TEXT) AS Nit, CAST(Par.Nombre AS TEXT) AS Nombre,Par.Tarifa_carro,
     Par.Tarifa_moto,CAST(Par.Horario AS TEXT) AS Horario,CAST(Par.Ciudad AS TEXT) AS Ciudad, Par.Cupos, Par.Cupos_dis,
@@ -27,9 +29,10 @@ if (!isset($_GET["fecha"])) {
 } else if (isset($_GET["fecha"])) {
     //ALGO
     $qry = "SELECT CAST(Par.Nit AS TEXT) AS Nit, CAST(Par.Nombre AS TEXT) AS Nombre,
-    Ubi.Direccion, SUM(Reg.Valor) AS Valor from FelipeING_Parqueadero AS Par 
+    Ubi.Direccion, SUM(Reg.Valor) AS Valor from FelipeING_Parqueadero AS Par
     LEFT JOIN FelipeING_Ubicacion AS Ubi on Par.Nit = Ubi.Parq_ID
     LEFT JOIN FELIPEING_Registro AS Reg on Par.Nit = Reg.Parq_ID
+    WHERE Reg.Fecha_R >= '$fecha' 
     GROUP BY Par.Nit, Par.Nombre, Ubi.Direccion;";
 
     $result = mssql_query($qry, $link);
