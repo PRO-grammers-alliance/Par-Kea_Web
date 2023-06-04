@@ -15,12 +15,16 @@
     <script src="./js/jquery/jquery.dataTables.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/jquery/jquery-ui-1.10.4.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/jquery/jquery.alerts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
-<body>
+<body id="body">
     <div class="container">
-        <div>
-            <div class="flotante2">
+        <div class="row">
+            <span class="col-sm-6">
+                <a href="" id="des_excel">Descargar Excel</a>
+            </span>
+            <div class="flotante2" class="col-sm-6">
                 <div class="row">
                     <div class="col-12 col-sm mb-4 mb-sm-0  text-center v-line position-relative">
                         <img src="./assets/imgs/parq.png" width="490" height="300" style="border-radius: 1.875em;">
@@ -70,6 +74,7 @@
                                     <button class="btn btn-primary" onclick="limpiar()">LIMPIAR FILTRO</button>
                                 </div>
                             </form>
+                            <button class="btn btn-primary" onclick="graficas()">GENERAR GRAFICAS</button>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -90,6 +95,38 @@
             </div>
         </div>
     </div>
+    <section id="grafica">
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-6 mb-lg-0">
+                    <div class="card shadow">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0 font-weight-bold">Indicadores</h3>
+                            <h3 class="h6 mb-0 font-weight-bold">Total :<span id="total"></span></h3>
+                        </div>
+                        <div style="background-color: #ffffff;" class="card-body p-1" id="cardLine">
+                            <canvas id="Indicador_line"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-6 mb-lg-0">
+                    <div class="card shadow">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h3 class="h6 mb-0 font-weight-bold">Indicadores</h3>
+                            <h3 class="h6 mb-0 font-weight-bold">Total :<span id="total"></span></h3>
+                        </div>
+                        <div style="background-color: #ffffff;" class="card-body p-1" id="cardBar">
+                            <canvas id="Indicador_bar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div id="codigo">
         <div class="elemento col-sm-3 text-center" style="background-color: white; padding: 16px;">
             <h3>Cargando datos...</h3>
@@ -149,6 +186,26 @@
                 }
             });
         });
+    </script>
+    <script id="grafico">
+        let lables = "";
+        let data = "";
+    </script>
+    <script>
+        // Note: changes to the plugin code is not reflected to the chart, because the plugin is loaded at chart construction time and editor changes only trigger an chart.update().
+        const plugin = {
+            id: 'custom_canvas_background_color',
+            beforeDraw: (chart) => {
+                const {
+                    ctx
+                } = chart;
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, chart.width, chart.height);
+                ctx.restore();
+            }
+        };
     </script>
     <script src="js/reportes.js"></script>
     <!-- BOOTSTRAP -->

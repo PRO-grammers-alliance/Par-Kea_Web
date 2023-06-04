@@ -287,3 +287,30 @@ function reportCiudad(){
         })
     }
 }
+
+function graficas(){
+    // document.getElementById("Indicador_line").outerHTML="";
+    // var c = document.getElementById("cardLine");
+    // var canvas = document.createElement("canvas");
+    // canvas.setAttribute("id","Indicador_line");
+    // c.appendChild(canvas);
+    document.getElementById("Indicador_bar").outerHTML="";
+    var c2 = document.getElementById("cardBar");
+    var canvas2 = document.createElement("canvas");
+    canvas2.setAttribute("id","Indicador_bar");
+    c2.appendChild(canvas2);
+    document.getElementById("grafico").outerHTML="";
+    var b=document.getElementById("body")
+    var G=document.createElement("script");
+    G.setAttribute("id","grafico");
+    b.appendChild(G);
+    var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	        document.getElementById("grafico").innerHTML = this.responseText;
+	    }
+    }
+    var fecha = document.getElementById("filtroFecha").value;
+    xmlhttp.open("POST", "./php/IngresosPar.php?i="+fecha,true);
+    xmlhttp.send();
+}
