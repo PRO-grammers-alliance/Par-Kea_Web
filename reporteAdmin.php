@@ -21,17 +21,14 @@
 <body id="body">
     <div class="container">
         <div class="row">
-            <span class="col-sm-6">
-                <a href="" id="des_excel">Descargar Excel</a>
-            </span>
-            <div class="flotante2" class="col-sm-6">
+            <div class="flotante2 mb-3">
                 <div class="row">
                     <div class="col-12 col-sm mb-4 mb-sm-0  text-center v-line position-relative">
                         <img src="./assets/imgs/parq.png" width="490" height="300" style="border-radius: 1.875em;">
                     </div>
                     <div class="col-sm-12">
                         <div class="d-grid gap-1">
-                            <h4>Adiministrador</h4>
+                            <h4>Administrador</h4>
                         </div>
                     </div>
                     <div class="col-sm-12 mb-3">
@@ -70,11 +67,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div style="text-align: center;">
-                                    <button class="btn btn-primary" onclick="limpiar()">LIMPIAR FILTRO</button>
-                                </div>
                             </form>
-                            <button class="btn btn-primary" onclick="graficas()">GENERAR GRAFICAS</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-primary" onclick="limpiar()">LIMPIAR FILTRO</button>
+                            </div>
+                            <button id="genGraf" class="btn btn-primary" onclick="graficas()" hidden>GENERAR GRAFICAS</button>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -95,24 +92,12 @@
             </div>
         </div>
     </div>
-    <section id="grafica">
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-lg-12 mb-6 mb-lg-0">
-                    <div class="card shadow">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h3 class="h6 mb-0 font-weight-bold">Indicadores</h3>
-                            <h3 class="h6 mb-0 font-weight-bold">Total :<span id="total"></span></h3>
-                        </div>
-                        <div style="background-color: #ffffff;" class="card-body p-1" id="cardLine">
-                            <canvas id="Indicador_line"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+    <section id="grafica" hidden class="mb-5 mt-5">
         <div class="container">
             <div class="row">
+                <span class="col-sm-6">
+                    <a href="" id="des_excel"><button class="btn btn-primary">Descargar Reportes</button></a>
+                </span>
                 <div class="col-lg-12 mb-6 mb-lg-0">
                     <div class="card shadow">
                         <div class="card-header d-flex align-items-center justify-content-between">
@@ -150,8 +135,9 @@
             $("#departamento").on("change", function() {
                 var departamento = $(this).val();
                 var departamentoID = departamento.split("-")[0];
-                if (departamentoID > 0) {
+                if (departamentoID >= 0) {
                     reportDepto();
+                    graficas();
                     var datos = new FormData();
                     datos.append('type', 2);
                     datos.append('departamento', departamentoID);
